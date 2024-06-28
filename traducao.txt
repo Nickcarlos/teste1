@@ -1,0 +1,21 @@
+$(function(){
+
+    function traduzir(lang){
+
+       $('.lang').each(function(index, element){
+          $(this).text(arrLang[lang][$(this).attr('key')]);
+       });
+
+       // salva o cookie
+       sessionStorage.setItem("idioma", lang);
+    }
+
+    $('.translate').click(function(){
+       var lang = $(this).attr('id');
+       traduzir(lang);
+    });
+
+    var language = sessionStorage.getItem("idioma");
+    if(language) traduzir(language);
+
+});
